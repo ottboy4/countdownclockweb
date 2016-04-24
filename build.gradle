@@ -1,0 +1,156 @@
+buildscript {
+    ext {
+        grailsVersion = project.grailsVersion
+    }
+    repositories {
+        mavenLocal()
+        maven { url "https://repo.grails.org/grails/core" }
+    }
+    dependencies {
+        classpath "org.grails:grails-gradle-plugin:$grailsVersion"
+        classpath "com.bertramlabs.plugins:asset-pipeline-gradle:2.7.4"
+        classpath "org.grails.plugins:hibernate4:5.0.4"
+        classpath "com.craigburke.angular:angular-template-asset-pipeline:2.2.6"
+        classpath 'com.moowork.gradle:gradle-node-plugin:0.11'
+    }
+}
+
+plugins {
+    id "io.spring.dependency-management" version "0.5.4.RELEASE"
+    id 'com.bertramlabs.asset-pipeline' version '2.5.0'
+}
+
+version "0.1"
+group "countdownclockweb"
+
+apply plugin:"idea"
+apply plugin:"war"
+apply plugin:"org.grails.grails-web"
+apply plugin:"org.grails.grails-gsp"
+apply plugin:"asset-pipeline"
+apply plugin: "com.moowork.node"
+
+
+ext {
+    grailsVersion = project.grailsVersion
+    gradleWrapperVersion = project.gradleWrapperVersion
+}
+
+node {
+    version = '5.4.1'
+    npmVersion = '3.5.3'
+    download = true
+}
+
+repositories {
+    mavenLocal()
+    maven { url "https://repo.grails.org/grails/core" }
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.grails:grails-bom:$grailsVersion"
+    }
+    applyMavenExclusions false
+}
+
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-logging"
+    compile "org.springframework.boot:spring-boot-autoconfigure"
+    compile "org.grails:grails-core"
+    compile "org.springframework.boot:spring-boot-starter-actuator"
+    compile "org.springframework.boot:spring-boot-starter-tomcat"
+    compile "org.grails:grails-dependencies"
+    compile "org.grails:grails-web-boot"
+    compile "org.grails.plugins:cache"
+    compile "org.grails.plugins:scaffolding"
+    compile "org.grails.plugins:hibernate4"
+    compile "org.hibernate:hibernate-ehcache"
+    console "org.grails:grails-console"
+    profile "org.grails.profiles:web:3.1.5"
+    runtime "org.grails.plugins:asset-pipeline"
+    runtime "com.h2database:h2"
+    testCompile "org.grails:grails-plugin-testing"
+    testCompile "org.grails.plugins:geb"
+    testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
+    testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
+
+    // reactive x for async control
+    compile 'io.reactivex:rxjava:1.1.0'
+
+    // apache async http library for async requests
+    compile 'com.ning:async-http-client:1.9.31'
+    compile 'org.codehaus.groovy.modules.http-builder:http-builder:0.5.0-RC2'
+
+    // angular plugins
+    assets 'com.craigburke.angular:angular-annotate-asset-pipeline:2.4.0'
+    compile "com.craigburke.angular:angular-template-asset-pipeline:2.2.6"
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = gradleWrapperVersion
+}
+
+assets {
+    minifyJs = true
+    minifyCss = true
+}
+
+task npmCacheConfig(type: NpmTask) {
+    description = "Configure the NPM cache"
+    def npmCacheDir = "${gradle.getGradleUserHomeDir()}/caches/npm"
+    outputs.files file(npmCacheDir)
+    args = [ 'config', 'set', 'cache', npmCacheDir ]
+}
+
+task npmPackages(type: NpmTask, dependsOn: npmCacheConfig) {
+    description = "Install Node.js packages"
+    args = [ 'install' ]
+    inputs.files file('package.json')
+    outputs.files file('node_modules')
+}
+
+task bowerInstall(type: NodeTask) {
+    script = file('node_modules/bower/bin/bower')
+    args = ["--config.storage.cache=${gradle.getGradleUserHomeDir()}/caches/bower/cache",
+            "--config.storage.packages=${gradle.getGradleUserHomeDir()}/caches/bower/packages",
+            "--config.storage.registry=${gradle.getGradleUserHomeDir()}/caches/bower/registry",
+            'install']
+    inputs.files file('bower.json')
+    outputs.files file('bower_components')
+    dependsOn npmPackages
+}
+
+task bowerSyncJavascript(type: Sync) {
+    from 'bower_components'
+    into "grails-app/assets/javascripts/bower_components"
+    exclude '**/*.min.js'
+    exclude '**/angular*/index.js'
+    exclude '**/angular*/ng*.js'
+    include 'Chart.js/Chart.js'
+    include 'rxjs/dist/rx.all.js'
+    include 'angular*/**/*.js'
+    include 'ng-table/dist/ng-table.js'
+    dependsOn bowerInstall
+}
+
+task bowerSyncStylesheets(type: Sync) {
+    from 'bower_components'
+    into "grails-app/assets/stylesheets/bower_components"
+    include 'bootstrap/dist/css/bootstrap.css'
+    include 'ng-table/dist/ng-table.css'
+    include 'angular-chart.js/dist/angular-chart.css'
+    dependsOn bowerInstall
+}
+
+task bowerPackages() {
+    dependsOn bowerSyncJavascript, bowerSyncStylesheets
+}
+
+processResources.dependsOn bowerPackages
+assetCompile.dependsOn bowerPackages
+
+clean.delete << file('grails-app/assets/javascripts/bower_components')
+clean.delete << file('grails-app/assets/stylesheets/bower_components')
+clean.delete << file('node_modules')
+clean.delete << file('bower_components')

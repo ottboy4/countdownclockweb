@@ -1,0 +1,36 @@
+/*
+*= require bower_components/bootstrap/dist/css/bootstrap.min
+*= require bootstrap-theme
+*= require bower_components/ng-table/dist/ng-table
+*= require bower_components/angular-chart.js/dist/angular-chart
+*/
+
+body {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+.logo {
+    height: 99px;
+    width: 200px;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.full-screen-modal .modal-dialog {
+    width: 90%;
+}
+
+.search-highlight {
+    font-weight: bold;
+    color: black;
+}
+
+.loading {
+    text-align: center;
+    background: url('spinner.gif') no-repeat bottom;
+    background-size: 60px 60px;
+    min-height: 100px;
+}
