@@ -1,7 +1,9 @@
 
 <div ng-init="init()">
-    <h1>{{time | date:'mediumTime'}}<br>
-        {{time | date:'shortDate'}}
+    <h1>{{time.format("MMMM DD, YYYY h:mm:ss a");}}
+    </h1>
+    <h1>
+        {{timeleft.hours() | leadingZeros:2}}:{{timeleft.minutes() | leadingZeros:2}}:{{timeleft.seconds() | leadingZeros:2}}
     </h1>
 </div>
 

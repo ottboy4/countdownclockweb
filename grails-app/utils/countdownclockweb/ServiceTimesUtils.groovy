@@ -14,6 +14,9 @@ class ServiceTimesUtils {
         }
         def plans = findServicePlans(typeID)
         def plan = findNextPlan(typeID, plans)
+        if (!plan) {
+            throw new Exception("Next plan does not exist")
+        }
         def planItems = api.listPlanItems(typeID, plan.id)
 
         // calculate actual time

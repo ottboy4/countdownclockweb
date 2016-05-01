@@ -25,6 +25,7 @@
           <element id="library" level="project" name="Gradle: org.hibernate:hibernate-ehcache:4.3.11.Final" />
           <element id="library" level="project" name="Gradle: io.reactivex:rxjava:1.1.0" />
           <element id="library" level="project" name="Gradle: com.ning:async-http-client:1.9.31" />
+          <element id="library" level="project" name="Gradle: org.codehaus.groovy.modules.http-builder:http-builder:0.5.0-RC2" />
           <element id="library" level="project" name="Gradle: com.craigburke.angular:angular-template-asset-pipeline:2.2.6" />
           <element id="library" level="project" name="Gradle: ch.qos.logback:logback-classic:1.1.5" />
           <element id="library" level="project" name="Gradle: org.slf4j:jcl-over-slf4j:1.7.16" />
@@ -70,6 +71,10 @@
           <element id="library" level="project" name="Gradle: org.hibernate:hibernate-core:4.3.11.Final" />
           <element id="library" level="project" name="Gradle: net.sf.ehcache:ehcache-core:2.4.3" />
           <element id="library" level="project" name="Gradle: io.netty:netty:3.10.4.Final" />
+          <element id="library" level="project" name="Gradle: org.apache.httpcomponents:httpclient:4.5.1" />
+          <element id="library" level="project" name="Gradle: net.sf.json-lib:json-lib:jdk15:2.3" />
+          <element id="library" level="project" name="Gradle: net.sourceforge.nekohtml:nekohtml:1.9.22" />
+          <element id="library" level="project" name="Gradle: xml-resolver:xml-resolver:1.2" />
           <element id="library" level="project" name="Gradle: com.googlecode.htmlcompressor:htmlcompressor:1.5.2" />
           <element id="library" level="project" name="Gradle: ch.qos.logback:logback-core:1.1.5" />
           <element id="library" level="project" name="Gradle: commons-logging:commons-logging:1.2" />
@@ -106,6 +111,12 @@
           <element id="library" level="project" name="Gradle: org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec:1.0.0.Final" />
           <element id="library" level="project" name="Gradle: antlr:antlr:2.7.7" />
           <element id="library" level="project" name="Gradle: org.jboss:jandex:1.1.0.Final" />
+          <element id="library" level="project" name="Gradle: org.apache.httpcomponents:httpcore:4.4.4" />
+          <element id="library" level="project" name="Gradle: commons-codec:commons-codec:1.9" />
+          <element id="library" level="project" name="Gradle: commons-beanutils:commons-beanutils:1.9.2" />
+          <element id="library" level="project" name="Gradle: commons-collections:commons-collections:3.2.2" />
+          <element id="library" level="project" name="Gradle: net.sf.ezmorph:ezmorph:1.0.6" />
+          <element id="library" level="project" name="Gradle: xerces:xercesImpl:2.11.0" />
           <element id="library" level="project" name="Gradle: aopalliance:aopalliance:1.0" />
           <element id="library" level="project" name="Gradle: org.apache.ant:ant:1.9.4" />
           <element id="library" level="project" name="Gradle: org.codehaus.groovy:groovy-groovydoc:2.4.6" />
@@ -152,25 +163,14 @@
           <element id="library" level="project" name="Gradle: com.jayway.jsonpath:json-path:2.0.0" />
           <element id="library" level="project" name="Gradle: io.projectreactor.spring:reactor-spring-core:2.0.7.RELEASE" />
           <element id="library" level="project" name="Gradle: com.goldmansachs:gs-collections:5.1.0" />
-          <element id="library" level="project" name="Gradle: commons-collections:commons-collections:3.2.2" />
           <element id="library" level="project" name="Gradle: org.codehaus.jsr166-mirror:jsr166y:1.7.0" />
           <element id="library" level="project" name="Gradle: org.reactivestreams:reactive-streams:1.0.0" />
           <element id="library" level="project" name="Gradle: net.minidev:json-smart:2.1.1" />
           <element id="library" level="project" name="Gradle: com.goldmansachs:gs-collections-api:5.1.0" />
           <element id="library" level="project" name="Gradle: net.minidev:asm:1.0.2" />
           <element id="library" level="project" name="Gradle: asm:asm:3.3.1" />
-          <element id="library" level="project" name="Gradle: org.mozilla:rhino:1.7.7" />
-          <element id="library" level="project" name="Gradle: org.apache.httpcomponents:httpclient:4.5.1" />
-          <element id="library" level="project" name="Gradle: net.sourceforge.nekohtml:nekohtml:1.9.22" />
-          <element id="library" level="project" name="Gradle: org.apache.httpcomponents:httpcore:4.4.4" />
-          <element id="library" level="project" name="Gradle: commons-codec:commons-codec:1.9" />
-          <element id="library" level="project" name="Gradle: xerces:xercesImpl:2.11.0" />
           <element id="library" level="project" name="Gradle: xml-apis:xml-apis:1.4.01" />
-          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.groovy.modules.http-builder/http-builder/0.5.0-RC2/762a1ce0a3f9740a55cd1920ab6f698e30c77144/http-builder-0.5.0-RC2.jar" />
-          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.sf.json-lib/json-lib/2.3/f35340c0a0380141f62c72b76c8fb4bfa638d8c1/json-lib-2.3-jdk15.jar" />
-          <element id="file-copy" path="$MAVEN_REPOSITORY$/xml-resolver/xml-resolver/1.2/xml-resolver-1.2.jar" />
-          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-beanutils/commons-beanutils/1.9.2/7a87d845ad3a155297e8f67d9008f4c1e5656b71/commons-beanutils-1.9.2.jar" />
-          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.sf.ezmorph/ezmorph/1.0.6/1e55d2a0253ea37745d33062852fd2c90027432/ezmorph-1.0.6.jar" />
+          <element id="library" level="project" name="Gradle: org.mozilla:rhino:1.7.7" />
         </element>
       </element>
       <element id="directory" name="META-INF">

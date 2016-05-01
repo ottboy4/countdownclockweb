@@ -7,3 +7,4 @@
 //= require bower_components/angular-bootstrap/ui-bootstrap-tpls
 //= require bower_components/Chart.js/Chart
 //= require bower_components/angular-chart.js/dist/angular-chart
+//= require bower_components/momentjs/moment

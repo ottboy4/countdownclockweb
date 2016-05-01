@@ -152,8 +152,8 @@
     <orderEntry type="library" name="Gradle: org.apache.ant:ant-antlr:1.9.4" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.ant:ant-launcher:1.9.4" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.ant:ant-junit:1.9.4" level="project" />
-    <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-annotations:2.6.5" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: com.google.javascript:closure-compiler:v20151015" level="project" />
+    <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-annotations:2.6.5" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-core:2.6.5" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-aspects:4.2.5.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.aspectj:aspectjrt:1.8.8" level="project" />

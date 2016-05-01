@@ -9,10 +9,14 @@ angular.module('countdownclockweb').service('PcoService',
 
         return {
             now: function () {
-               return Rx.Observable.fromPromise($http.get('/Time/now')).map(pullData);
+               return Rx.Observable.fromPromise($http.get('/Time/now')).map(pullData).map(function (it) {
+                  return moment(it.time);
+               });
             },
             next: function () {
-                return Rx.Observable.fromPromise($http.get('/Time/next')).map(pullData);
+                return Rx.Observable.fromPromise($http.get('/Time/next')).map(pullData).map(function (it) {
+                    return moment(it.time);
+                });
             }
         };
     });

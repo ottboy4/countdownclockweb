@@ -130,6 +130,7 @@ task bowerSyncJavascript(type: Sync) {
     include 'Chart.js/Chart.js'
     include 'rxjs/dist/rx.all.js'
     include 'angular*/**/*.js'
+    include 'momentjs*/**/*.js'
     include 'ng-table/dist/ng-table.js'
     dependsOn bowerInstall
 }
