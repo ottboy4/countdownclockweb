@@ -8,10 +8,7 @@ class TimeController {
 
     def next() {
         // TODO get the plan/items name from config - or from call arguments
-        def next = util.findNextCountdown('Weekend Service', ['Bumper', 'Prayer'])
-        def result = [
-                time: next
-        ]
+        def result = util.findNextCountdown('Weekend Service', ['Bumper', 'Prayer'])
         render result as JSON
     }
 

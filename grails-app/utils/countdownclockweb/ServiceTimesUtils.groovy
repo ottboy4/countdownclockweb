@@ -43,7 +43,12 @@ class ServiceTimesUtils {
             def time = Calendar.getInstance()
             time.setTime(startTime)
             time.add(Calendar.SECOND, length)
-            return time.getTimeInMillis()
+            def result = [
+                    time: time.getTimeInMillis(),
+                    serviceTimeName: plan.current.attributes.name,
+                    itemName: nextItem.attributes.title
+            ]
+            return result
         } else {
             return null
         }

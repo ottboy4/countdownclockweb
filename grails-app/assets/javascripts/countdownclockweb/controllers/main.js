@@ -5,6 +5,7 @@ angular.module('countdownclockweb').controller('MainCtrl',
         
         $scope.serverTimeDiff = 0;
         $scope.countdownTo = null;
+        $scope.countdownToName = null;
 
         var HALF_SECOND = 500;
 
@@ -16,12 +17,13 @@ angular.module('countdownclockweb').controller('MainCtrl',
         var loadTime = function () {
             var now = moment();
             PcoService.now().subscribe(function (it) {
-                $scope.serverTimeDiff = now.diff(it);
+                $scope.serverTimeDiff = now.diff(it.time);
                 console.log('loaded time');
             });
             
             PcoService.next().subscribe(function (it) {
-                $scope.countdownTo = it;
+                $scope.countdownTo = it.time;
+                $scope.countdownToName = it.serviceTimeName + ' - ' + it.itemName;
             });
         };
         
